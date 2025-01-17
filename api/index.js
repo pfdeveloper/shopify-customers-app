@@ -42,7 +42,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/api/create-customer", async (req, res) => {
-  const { firstName, lastName, email, note } = req.body;
+  const { firstName, lastName, email, tag, note } = req.body;
 
   try {
     const session = shopify.session.customAppSession(
@@ -53,6 +53,7 @@ app.post("/api/create-customer", async (req, res) => {
     customer.first_name = firstName;
     customer.last_name = lastName;
     customer.email = email;
+    customer.tags = tag;
     customer.note = note;
 
     await customer.save({
