@@ -53,10 +53,10 @@ app.post("/api/create-customer", async (req, res) => {
     customer.first_name = firstName;
     customer.last_name = lastName;
     customer.email = email;
-    customer.tags = "" + tags;
+    customer.tags = tags;
     customer.note = note;
 
-    await customer.save({
+    await customer.saveAndUpdate({
       update: true,
     });
 
